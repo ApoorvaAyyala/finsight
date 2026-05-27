@@ -1,0 +1,8 @@
+yfinance
+duckdb
+pandas
+streamlit
+plotly
+torch
+deap
+google-generativeai
