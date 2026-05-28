@@ -110,7 +110,7 @@ Where:
 
 The sequential neural architecture processes a combined tensor $X_t$ containing the quantitative market matrices mapped from DuckDB joined with the NLP semantic text-mined vectors ($\text{sent}_t$, $\text{conf}_t$) generated via the Google Gemini SDK:
 
-$$X_t = \begin{bmatrix} \text{indicators}_t \\ \text{avg\_sentiment}_t \\ \text{sentiment\_confidence}_t \end{bmatrix}$$
+$$X_t = \begin{bmatrix} \mathit{indicators}_t \\ \mathit{avg\_sentiment}_t \\ \mathit{sentiment\_confidence}_t \end{bmatrix}$$
 
 This multi-modal input tensor flows into an itemized recurrent **Long Short-Term Memory (LSTM)** block, transitioning memory parameters over a continuous time space using standard gating mechanics:
 
@@ -156,3 +156,23 @@ $$\sum_{j=1}^{K} \omega_j = 1.0 \quad \text{and} \quad \omega_j \ge 0 \quad \for
 If an evolutionary crossover or mutation operation breaches these criteria, the pipeline passes the array into a normalizing vector function to restore compliance before fitness recalculation:
 
 $$\omega_{j, \text{normalized}} = \frac{\max(0, \omega_j)}{\sum_{m=1}^{K} \max(0, \omega_m)}$$
+
+## 📂 Repository Structure
+
+The platform implements a highly modular architectural pattern, separating extraction logic from optimization routines and visualization scripts. The explicit breakdown of workspace assets is outlined below:
+
+```text
+finsight/
+├── config.py             # Global constants, multi-asset ticker arrays, and localized engine states
+├── ingest.py             # Phase 1a: DuckDB big-data engine computing technical analytics views
+├── sentiment.py          # Phase 1b: Google Gemini SDK text miner featuring robust schema mappers
+├── model.py              # Phase 2a: PyTorch Neural Recurrent LSTM state-space forecaster
+├── optimize.py           # Phase 2b: DEAP Evolutionary Heuristic Genetic Optimization engine
+├── app.py                # Phase 3: Interactive multi-page Streamlit analytics cockpit
+├── run_all.py            # Master Pipeline Coordinator executing smart bypass caching logic
+├── requirements.txt      # Unified pre-compiled package manifest for hermetic environment setups
+├── data/                 # Transient storage layer housing intermediate Parquet and CSV files (Git ignored)
+└── mocks/
+    └── sentiments_cache.json # High-fidelity offline fallback text-mining semantic dataset
+```
+
