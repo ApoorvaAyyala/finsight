@@ -1,0 +1,53 @@
+🚀 Installation & Local Workspace Setup
+Follow this step-by-step sequence to configure an isolated local runtime container environment on your host machine and run the complete system safely:
+
+1. Repository Cloning & Path Alignment
+
+[PowerShell]
+# Pull the architecture repository cleanly from GitHub
+git clone [https://github.com/ApoorvaAyyala/finsight.git](https://github.com/ApoorvaAyyala/finsight.git)
+
+# Step into the root development path
+cd finsight
+
+
+2. Hermetic Virtual Environment Activation
+
+[PowerShell]
+# Instantiate a localized virtual environment container
+python -m venv venv
+
+# Activation pattern for standard Windows PowerShell
+# (Bypass execution policy restrictions safely if prompted by the shell)
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+.\venv\Scripts\Activate.ps1
+(Your shell prompt line will display a (venv) prefix, verifying successful entry).
+
+
+3. Binary Package Installation
+
+[PowerShell]
+# Upgrade pip to the latest secure version
+python -m pip install --upgrade pip
+
+# Force download and bind the unified package dependencies array
+pip install -r requirements.txt
+
+
+4. Configuration of Cloud Credentials (Optional)
+
+[PowerShell]
+# Set your active API key environment variable inside PowerShell
+$env:GEMINI_API_KEY="AIzaSyYourActualGoogleAIStudioDeveloperKey"
+
+
+🏁 Execution Lifecycle: 
+
+Option A: Complete System Pipeline Orchestration (Recommended)
+[PowerShell]
+python run_all.py
+
+
+Option B: Launch the Business Analytics Dashboard
+[PowerShell]
+streamlit run app.py
