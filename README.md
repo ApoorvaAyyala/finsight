@@ -49,7 +49,7 @@ The system is engineered as an asynchronous, decoupling-safe data pipeline where
                                                                                                 |  Streamlit  |
                                                                                                 | BI Cockpit  |
                                                                                                 +─────────────+
-
+```
 ## 🚀 Pipeline Breakdown & Architecture Core
 
 The platform is engineered as a highly decoupled, asynchronous automated data pipeline where specialized scripts transform raw, noisy inputs into low-variance predictive assets:
